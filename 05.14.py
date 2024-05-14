@@ -1,16 +1,59 @@
-# This is a sample Python script.
+"""
+백준 5639
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+1. 이진탐색트리 일부 구현
+2. 전위순회 결과 트리에 주입
+3. 후위순회 진행
+"""
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class Node:
+    def __init__(self, key, left=None, right=None):
+        self.key = key
+        self.left = left
+        self.right = right
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+
+    def add(self, key):
+        if self.root is None:
+            self.root = Node(key)
+        else:
+            parent = self.root
+            child = self.root
+            while child is not None:
+                if key < parent.key:
+                    parent, child = child, parent.left
+                else:
+                    parent, child = child, parent.right
+            if key < parent.key:
+                parent.left = Node(key)
+            else:
+                parent.right = Node(key)
+
+    def postorder_traversal(self):
+        def print_key(node):
+            if node.left is not None:
+                print_key(node.left)
+            if node.right is not None:
+                print_key(node.right)
+            print(node.key)
+        print_key(self.root)
+
+
+from sys import stdin, setrecursionlimit
+
+setrecursionlimit(10**6)
+tree = BinarySearchTree()
+for i in stdin:
+    tree.add(int(i))
+tree.postorder_traversal()
+
+
+
+
+
+
