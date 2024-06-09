@@ -16,7 +16,7 @@ def make_dp_table(board: list) -> list:
     dp = [[0]*(W+1) for _ in range(H+1)]
     for row in range(H):
         for col in range(W):
-            dp[row+1][col+1] = dp[row][col+1]+dp[row+1][col]-dp[row][col]+[0, 1]["BW"[(row%2+col%2)%2]!=board[row][col]]
+            dp[row+1][col+1] = dp[row][col+1]+dp[row+1][col]-dp[row][col]+[0, 1]["BW"[(row+col)%2]!=board[row][col]]
     return dp
 
 def find_min_change(dp: list) -> int:
