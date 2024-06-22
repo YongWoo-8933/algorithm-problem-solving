@@ -9,6 +9,8 @@ H, W, X, Y = map(int, stdin.readline().split())
 B = [[*map(int, i.split())] for i in stdin]
 A = [[0]*W for _ in range(H)]
 for row in range(H):
+    print(row)
+for row in range(H):
     for col in range(W):
         A[row][col] = B[row][col]
 for row in range(X, H+X):
