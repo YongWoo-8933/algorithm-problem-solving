@@ -9,5 +9,3 @@ for i in range(2,1001):
     l+=[sum(l[:i//2+1])]
 for i in range(int(input())):
     print(l[int(input())])
-
-
