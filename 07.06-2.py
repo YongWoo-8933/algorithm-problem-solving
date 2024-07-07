@@ -54,19 +54,3 @@ day = 0
 while 1:
     MAP = f(MAP, H, W, day)
     day += 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
