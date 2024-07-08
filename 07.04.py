@@ -54,8 +54,3 @@ for day in range(2001):
         for col in range(N):
             cnt, value = union_dict[parents[row*N+col]]
             MAP[row][col] = value//cnt
-
-
-
-
-

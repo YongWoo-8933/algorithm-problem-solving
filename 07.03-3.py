@@ -22,7 +22,7 @@
 """
 from sys import stdin, setrecursionlimit
 
-def dfs(row, col) -> bool:
+def dfs(row, col) -> int:
     global board, dp, H, W
     if row==H-1 and col==W-1:
         return 1
@@ -42,7 +42,3 @@ H, W = map(int, stdin.readline().split())
 board = [[*map(int, i.split())] for i in stdin]
 dp = [[[None, None, None, None] for _ in range(W)] for __ in range(H)]
 print(dfs(0, 0))
-
-
-
-
