@@ -1,35 +1,31 @@
 """
 백준 14002 가장 긴 증가하는 부분 수열 4 (골드4)
 
-수열 A가 주어졌을 때, 가장 긴 증가하는 부분 수열을 구하는 프로그램을 작성하시오.
-
-예를 들어, 수열 A = {10, 20, 10, 30, 20, 50} 인 경우에 가장 긴 증가하는 부분 수열은 A = {10, 20, 10, 30, 20, 50} 이고, 길이는 4이다.
-
-입력
-첫째 줄에 수열 A의 크기 N (1 ≤ N ≤ 1,000)이 주어진다.
-
-둘째 줄에는 수열 A를 이루고 있는 Ai가 주어진다. (1 ≤ Ai ≤ 1,000)
-
-출력
-첫째 줄에 수열 A의 가장 긴 증가하는 부분 수열의 길이를 출력한다.
-
-둘째 줄에는 가장 긴 증가하는 부분 수열을 출력한다. 그러한 수열이 여러가지인 경우 아무거나 출력한다.
-
-예제 입력 1 
-6
-10 20 10 30 20 50
-예제 출력 1 
-4
-10 20 30 50
+1. 가장 긴 증가하는 부분수열의 이분탐색 풀이법을 그대로 사용
+2. 단, 수열 자체를 저장해놓기위해 길이별로(1~1000)
+   증가하는 부분수열을 따로 저장해놓음
 """
 from bisect import bisect_left
+from copy import deepcopy
+
 N = int(input())
 lst = [*map(int, input().split())]
-dp = [(1, lst[0])]
+dp = [lst[0]]
 answer = [[lst[0]]]
-for row in lst[1:]:
-    if not dp:
-        dp.append()
+for x in lst[1:]:
+    idx = bisect_left(dp, x)
+    temp = deepcopy(answer[idx-1]) if idx!=0 else []
+    temp.append(x)
+    if idx==len(dp):
+        dp.append(x)
+        answer.append(temp)
+    else:
+        dp[idx] = x
+        answer[idx] = temp
+print(len(answer[-1]))
+print(*answer[-1])
+
+
 
 
 
