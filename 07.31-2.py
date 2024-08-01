@@ -26,8 +26,3 @@ limit = min(N//2, 87654)
 for n in range(1, limit+1):
     f(n, N)
 print(-1)
-
-
-            
-
-
