@@ -29,5 +29,3 @@ for row in range(N):
         if not dp[row][col]:
             answer = max(answer, dfs(row, col))
 print(answer)
-    
-

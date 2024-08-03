@@ -67,6 +67,3 @@ for srow in range(N):
                         visited[nrow][ncol] = cnt+1
                         q.append((cnt+1, nrow, ncol))
 print(answer)
-        
-    
-

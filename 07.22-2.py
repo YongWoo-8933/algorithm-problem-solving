@@ -33,7 +33,3 @@ for _ in range(int(input())):
                 heappush(hq, (abs(erow-store_row)+abs(ecol-store_col), store_row, store_col))
     else:
         print("sad")
-
-        
-    
-

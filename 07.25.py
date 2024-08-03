@@ -52,14 +52,6 @@ def rotate_group_counter_clockwise():
 
 H, W, R = int_map()
 board = [[*int_map()] for _ in range(H)]
-# board = [
-#     [3, 2, 6, 3, 1, 2, 9, 7],
-#     [9, 7, 8, 2, 1, 4, 5, 3],
-#     [5, 9, 2, 1, 9, 6, 1, 8],
-#     [2, 1, 3, 8, 6, 3, 9, 2],
-#     [1, 3, 2, 8, 7, 9, 2, 1],
-#     [4, 5, 1, 9, 8, 2, 1, 3],
-# ]
 for command in int_map():
     # 상하
     if command==1:
