@@ -1,80 +1,39 @@
 """
 백준 5179 우승자는 누구? (실버 2)
 
-대회가 끝이 나면 대부분의 참가자들은 어디서 꼬였는지에 대한 원망과 함께 좌절하게 된다.
-심사위원들 또한 좌절한다. 제출 기록에 따라 각 참가자에게 점수를 매기고 순위를 산정해야 하기 때문이다.
-비록 대회는 끝이 났지만 아직 코딩할 여력이 있다면, 심사위원들을 도울 순위 산정 프로그램을 만들어보자.
-
-입력
-첫 줄에 테스트 케이스의 수 K가 주어진다.
-
-각 테스트 케이스의 첫 줄엔 세 개의 정수 M, N, P가 주어진다.
-M은 대회에 사용된 문제의 개수이며 (1 ≤ M ≤ 10), 
-N은 총 제출 수 (1 ≤ N ≤ 5000),
-P는 참가자의 수 (1 ≤ P ≤ 500) 이다.
-
-각 문제는 A, B, ... 로 이름붙여져 있으며, 참가자들은 1부터 P까지의 아이디를 갖는다.
-이어 N개의 줄에 걸쳐 제출 기록의 내용이 주어진다.
-
-제출 기록은 p m t j의 형식이며, 
-p는 제출한 참가자(1, 2, ...) , 
-m은 문제 번호(A, B, ..), 
-t는 제출한 시각, 
-j는 정답 여부이다. j=0이라면 오답이며, j=1일 경우엔 정답이다.
-
-제출 기록은 제출 시각이 감소하지 않는 순으로 주어진다.
-문제를 맞힐 경우, 맞힌 사람은 총점에 문제를 맞힌 시각 + 그 문제를 틀린 횟수*20만큼을 더하게 된다.
-만일 동일한 문제를 두 번 이상 맞히더라도 처음 맞힌 것만 인정된다.
-
-출력
-각 테스트 케이스마다 Data Set K: 를 출력한 뒤, 참가자들의 아이디, 푼 문제 수, 총점을 P줄에 걸쳐 1위부터 차례대로 출력한다.
-순위는 푼 문제 수가 다르다면 푼 문제 수가 많은 사람이 높으며,
-
-푼 문제 수가 같다면 총점이 낮은 사람이 순위가 높다.
-어떤 테스트 케이스에서도 동점자가 나오는 경우는 없다.
-각 테스트 케이스의 사이엔 빈 줄을 하나 출력한다.
-
-예제 입력 1 
-2
-4 6 3
-2 C 11 0
-1 B 24 1
-2 C 25 1
-1 C 40 0
-3 D 55 1
-2 B 55 1
-2 8 2
-1 A 8 0
-2 B 11 1
-1 A 11 0
-1 A 14 0
-1 A 20 0
-2 B 22 1
-2 A 23 0
-1 A 24 1
-예제 출력 1 
-Data Set 1:
-2 2 100
-1 1 24
-3 1 55
-
-Data Set 2:
-2 1 11
-1 1 104
+** 1. 틀린 문제를 총점에 추가할 때 맞힌 이후 틀린문제는 무시해야 함
+2. 1번을 잘 고려해 적당히 list와 dict를 활용하면 됨.
 """
 from sys import stdin
 
 for k in range(int(stdin.readline())):
     M, N, P = map(int, stdin.readline().split())
-    answer = [[0, 0] for _ in range(P+1)]
-    people_sol = [{} for _ in range(P+1)]
+    solved_problems = [set() for _ in range(P+1)]
+    wrong_problems = [{} for _ in range(P+1)]
+    total_scores = [0 for _ in range(P+1)]
     print(f"Data Set {k+1}:")
     for _ in range(N):
-        p, m, t, j = map(int, stdin.readline().split())
-        if m in people_sol[p]:
-            people_sol[p][m] = 
-        else:
-            people_sol[p][m] = [j, ]
+        p, m, t, j = stdin.readline().strip().split()
+        p, t, j = map(int, (p, t, j))
+        # 맞춘 이후는 생각하지 않음
+        if m not in solved_problems[p]:
+            # 틀렸던 문제에 없으면 초기화
+            if m not in wrong_problems[p]:
+                wrong_problems[p][m] = 0
+            # 맞춤
+            if j:
+                solved_problems[p].add(m)
+                total_scores[p] += t+wrong_problems[p][m]
+            # 틀림
+            else:
+                wrong_problems[p][m] += 20
+    answer = []
+    for p in range(1, P+1):
+        answer.append((p, len(solved_problems[p]), total_scores[p]))
+    answer.sort(key=lambda x: (-x[1], x[2]))
+    for i in answer:
+        print(*i)
+    print("")
 
 
 
