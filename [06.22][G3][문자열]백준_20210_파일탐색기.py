@@ -1,5 +1,5 @@
 """
-백준 20210 파일 탐색기
+백준 20210 파일 탐색기 (골드3)
 
 1. functools의 cmp_to_key 함수를 통해 두 객체의 대소비교를 customizing하는게 관건
 2. customizing한 대소비교 함수를 sort() 메소드의 key값에 넣어주면 됨

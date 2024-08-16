@@ -1,5 +1,5 @@
 """
-백준 2342 Dance Dance Revolution
+백준 2342 Dance Dance Revolution (골드3)
 
 1. 평범한 greedy 알고리즘으로 가기에는 경우가 좀 더 많음
    (당장은 왼쪽발로 가는게 더 낫더라도, 전체적으로는 비용이 많은 경우도 있음)

@@ -1,5 +1,5 @@
 """
-바이러스 실험 - 코드트리
+코드트리 - 바이러스 실험
 https://www.codetree.ai/training-field/frequent-problems/problems/virus-experiment/submissions?page=3&pageSize=20
 
 1. 배지의 영양상태를 표시하는 board list와 바이러스의 위치, 

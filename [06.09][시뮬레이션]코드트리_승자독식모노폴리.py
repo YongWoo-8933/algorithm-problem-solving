@@ -1,5 +1,5 @@
 """
-승자독식 모노폴리
+코드트리 - 승자독식 모노폴리
 https://www.codetree.ai/training-field/frequent-problems/problems/odd-monopoly/description?page=2&pageSize=20
 """
 from sys import stdin

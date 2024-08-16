@@ -11,6 +11,7 @@ for i in stdin:
     for j in i.strip().split():
         lst.append(j)
 answer = ""
+hr = "-"*80
 for s in lst:
     if s[0]=="<":
         if s[1]=="b":
@@ -20,7 +21,7 @@ for s in lst:
             if answer:
                 print(answer)
             answer = ""
-            print("-"*80)
+            print(hr)
     else:
         if len(answer)+len(s)+1>80:
             print(answer)
