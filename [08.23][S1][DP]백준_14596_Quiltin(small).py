@@ -1,37 +1,15 @@
 """
 백준 14596 Quilting (Small) (실버 1)
 
-예제 입력 1 
-4 3
-0 79 240
-10 110 230
-9 130 213
-30 70 235
-50 62 237
-16 58 99
-25 120 170
-90 120 240
-예제 출력 1 
-450
+1. 평범한 DP문제로, 모든 칸에 대해 각 칸이 선택됐을 때 가질 수 있는
+   최소값을 DP table에 저장해나감.
 """
 from sys import stdin
 
 def main():
     H, W = map(int, stdin.readline().split())
-    # B1 = [[*map(int, stdin.readline().split())] for _ in range(H)]
-    # B2 = [[*map(int, i.split())] for i in stdin]
-    B1 = [
-        [0 ,79, 240],
-        [10, 110, 23   ],
-        [9 ,130 ,213   ],
-        [30, 70 ,235   ],
-    ]
-    B2 = [
-        [50, 62 ,237],
-        [16, 58 ,99],
-        [25, 120, 170],
-        [90, 120, 240],
-    ]
+    B1 = [[*map(int, stdin.readline().split())] for _ in range(H)]
+    B2 = [[*map(int, i.split())] for i in stdin]
     dp = [0]*W
     INF = (255**2)*10
     for row in range(H):
