@@ -26,10 +26,8 @@ def solution(info, edges):
             new_sheep, new_wolves = sheep, wolves
             # 해당 노드 방문한적이 없음 -> 양 늑대 갱신
             if bit != new_bit:
-                # 해당 노드가 양임
                 if info[new_node]==0:
                     new_sheep += 1
-                # 해당 노드가 늑대임
                 elif sheep>wolves+1:
                     new_wolves += 1
                 else:
