@@ -1,56 +1,10 @@
 """
 백준 5427 불 (골드 4)
 
-첫째 줄에 테스트 케이스의 개수가 주어진다. 테스트 케이스는 최대 100개이다.
-
-각 테스트 케이스의 첫째 줄에는 빌딩 지도의 너비와 높이 w와 h가 주어진다. (1 ≤ w,h ≤ 1000)
-
-다음 h개 줄에는 w개의 문자, 빌딩의 지도가 주어진다.
-
-'.': 빈 공간
-'#': 벽
-'@': 상근이의 시작 위치
-'*': 불
-각 지도에 @의 개수는 하나이다.
-
-출력
-각 테스트 케이스마다 빌딩을 탈출하는데 가장 빠른 시간을 출력한다. 
-빌딩을 탈출할 수 없는 경우에는 "IMPOSSIBLE"을 출력한다.
-
-예제 입력 1 
-5
-4 3
-####
-#*@.
-####
-7 6
-###.###
-#*#.#*#
-#.....#
-#.....#
-#..@..#
-#######
-7 4
-###.###
-#....*#
-#@....#
-.######
-5 5
-.....
-.***.
-.*@*.
-.***.
-.....
-3 3
-###
-#@#
-###
-예제 출력 1 
-2
-5
-IMPOSSIBLE
-IMPOSSIBLE
-IMPOSSIBLE
+1. 불부터 q에 집어넣고 마지막에 상근이의 위치를 q에 집어넣음
+2. 이대로 BFS를 돌리면 반드시 불부터 이동함이 보장됨
+3. q에 불 이동 명령만 남아있다면 반복문 종료
+4. 상근이가 다음턴에 밖으로 나갈 수 있으면 반복문 종료
 """
 from sys import stdin
 from collections import deque
@@ -58,17 +12,20 @@ from collections import deque
 def main():
     for _ in range(int(stdin.readline())):
         W, H = map(int, stdin.readline().split())
-        MAP = []
+        MAP = [[*stdin.readline().strip()] for _ in range(H)]
         q = deque()
-        pos_row, pos_col = 0, 0
         for row in range(H):
-            MAP.append([*stdin.readline().strip()])
             for col in range(W):
-                if MAP[-1][col]=="*":
+                if MAP[row][col]=="*":
                     q.append((0, 0, row, col))
-                elif MAP[-1][col]=="@":
-                    pos_row, pos_col = row, col
-        q.append((1, 0, pos_row, pos_col))
+        for row in range(H):
+            for col in range(W):
+                if MAP[row][col]=="@":
+                    q.append((1, 0, row, col))
+                    break
+            else:
+                continue
+            break
         sanguen_cnt = 1
         escaped = False
         while q:
@@ -79,8 +36,6 @@ def main():
                     if 0<=nrow<H and 0<=ncol<W and MAP[nrow][ncol] in "@.":
                         MAP[nrow][ncol] = "*"
                         q.append((id, cnt+1, nrow, ncol))
-                for i in range(H):
-                    print(*MAP[i])
             # 상근이일 경우
             elif id==1:
                 sanguen_cnt -= 1
@@ -95,8 +50,6 @@ def main():
                         break
                 else:
                     if sanguen_cnt:
-                        for i in range(H):
-                            print(*MAP[i])
                         continue
                 break
         if escaped:
