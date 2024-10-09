@@ -11,7 +11,7 @@ from collections import deque
 def main():
     for _ in range(int(stdin.readline())):
         K, M, P = map(int, stdin.readline().split())
-        indegrees = [[0] for _ in range(M+1)]
+        indegrees = [0]*(M+1)
         links = [set() for _ in range(M+1)]
         for _ in range(P):
             fr, to = map(int, stdin.readline().split())
