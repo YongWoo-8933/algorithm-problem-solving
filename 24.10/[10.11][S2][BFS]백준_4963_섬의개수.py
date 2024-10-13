@@ -1,7 +1,7 @@
 """
-백준 2468 안전영역 (실버1)
+백준 4963 섬의 개수 (실버2)
 
-1. 모든 높이에 대해 BFS를 실시해 안전영역 카운트
+1. 특정한 조건을 만족하는 BFS 실시
 """
 from sys import stdin
 from collections import deque
@@ -22,8 +22,8 @@ def main():
                     queue = deque([(row, col)])
                     while queue:
                         r, c = queue.popleft()
-                        for nr, nc in [(r+1, c), (r-1, c), (r, c+1), (r, c-1)]:
-                            if 0<=nr<H and 0<=nc<W and not visited[nr][nc] and MAP[nr][nc]==0:
+                        for nr, nc in [(r+1, c-1), (r+1, c), (r+1, c+1), (r-1, c-1), (r-1, c), (r-1, c+1), (r, c+1), (r, c-1)]:
+                            if 0<=nr<H and 0<=nc<W and not visited[nr][nc] and MAP[nr][nc]==1:
                                 visited[nr][nc] = True
                                 queue.append((nr, nc))
         print(cnt)
