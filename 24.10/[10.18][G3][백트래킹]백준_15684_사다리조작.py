@@ -6,26 +6,26 @@
 
 from sys import stdin
 
-def back_tracking(n: int, max_cnt: int):
+def back_tracking(cnt: int, limit: int):
     global ladder, answer, H, N
 
     if answer!=-1:
         return
     
-    cur_cnt = check()
-    if cur_cnt+(max_cnt-n)*2 < N:
+    cur_mateched = check()
+    if cur_mateched+(limit-cnt)*2 < N:
         return
     
-    if n==max_cnt:
-        if cur_cnt==N:
-            answer = max_cnt
+    if cnt==limit:
+        if cnt==N:
+            answer = cnt
         return
     
     for h in range(1, H+1):
         for i in range(1, N):
             if ladder[h][i]==0 and ladder[h][i+1]==0:
                 ladder[h][i], ladder[h][i+1] = i+1, i
-                back_tracking(n+1, max_cnt)
+                back_tracking(cnt+1, limit)
                 ladder[h][i], ladder[h][i+1] = 0, 0
 
 def check() -> int:
@@ -47,8 +47,8 @@ for i in stdin:
     ladder[a][b] = b+1
     ladder[a][b+1] = b
 answer = -1
-for cnt in range(4):
-    back_tracking(0, cnt)
+for limit in range(4):
+    back_tracking(0, limit)
     if answer != -1:
         break
 print(answer)
