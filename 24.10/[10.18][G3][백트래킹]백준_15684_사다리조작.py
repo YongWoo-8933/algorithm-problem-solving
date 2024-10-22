@@ -40,7 +40,7 @@ def back_tracking(cnt: int, limit: int):
 
 # 현재 사다리 상태에서 몇개의 인덱스가 맞는지 return
 # ex) 1 2 3 4 5    
-#     2 1 4 3 5    => 4 return
+#     2 1 4 3 5    => 1 return
 def check() -> int:
     global ladder, N, H
     matched = 0
@@ -56,7 +56,7 @@ def check() -> int:
 # ladder => 사다리 모양에 맞게 상태 저장
 # ex) 3행 2열 - 3행 3열 이어져있다면
 #     3행 2열값 = 3
-#     3헹 3얄깂 = 2
+#     3행 3열값 = 2
 #     이어져있지 않다면 0
 N, M, H = map(int, stdin.readline().split())
 ladder = [[0]*(N+1) for _ in range(H+1)]
