@@ -1,10 +1,15 @@
 """
 백준 12762 롤러코스터 (골드4)
 
-1. 뺏을때 가장 거리가 큰 애를 빼주면됨
+1. LIS(Longest Increasing Subsequence) 응용문제
+2. 어떤 기둥을 하이라이트의 최하단으로 둘지 정함
+3. 최하단 기둥을 기준으로 기둥의 오른쪽 왼쪽 방향 각각에 대해 LIS 알고리즘 실행
+4. LIS 길이를 통해 최장 하이라이트 구간 산출
 """
 from sys import stdin
 from bisect import bisect_left
+
+
 
 def main():
     N = int(stdin.readline())
@@ -25,4 +30,3 @@ def main():
         answer = max(answer, cnt)
     print(answer)
 main()
-

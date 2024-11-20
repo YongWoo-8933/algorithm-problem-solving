@@ -1,16 +1,8 @@
 """
 백준 1446 지름길 (실버1)
 
-1. LIS(Longest Increasing Subsequence) 응용문제
-2. 어떤 기둥을 하이라이트의 최하단으로 둘지 정함
-3. 최하단 기둥을 기준으로 기둥의 오른쪽 왼쪽 방향 각각에 대해 LIS 알고리즘 실행
-4. LIS 길이를 통해 최장 하이라이트 구간 산출
-5 150
-0 50 10
-0 50 20
-50 100 10
-100 151 10
-110 140 90
+1. BFS 완전탐색
+2. 다익스트라 풀이
 """
 from sys import stdin
 from collections import deque
