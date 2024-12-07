@@ -1,12 +1,12 @@
 """
-백준 2665 미로만들기 (골드4)
+백준 13335 트럭 (실버1)
 
-1. heapq로 색을 바꾼 수가 적은 경우부터 BFS로 돌려 오른쪽 아래에 도달하면 종료
+1. deque을 만들어 다리로 생각하고, 매 단위시간마다 일어나는 일을 구현
 """
 from collections import deque
 
 def main():
-    n, w, L = map(int, input().split())
+    _, w, L = map(int, input().split())
     lst = [*map(int, input().split())][::-1]
     bridge = deque([0]*w)
     cur_weight = 0
@@ -23,6 +23,4 @@ def main():
             bridge.append(0)
     print(answer)
 
-
-        
 main()
