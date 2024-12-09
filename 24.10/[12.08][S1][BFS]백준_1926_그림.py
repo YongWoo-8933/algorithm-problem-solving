@@ -1,7 +1,7 @@
 """
 백준 1926 그림 (실버1)
 
-1. dp로 왼쪽칸에서 오는 경우와 위쪽칸에서 오는 경우중 더 많이 먹는 경우를 택하면됨
+1. BFS로 한바퀴 돌리면 됨
 """
 from sys import stdin
 from collections import deque
