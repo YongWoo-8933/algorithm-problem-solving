@@ -1,10 +1,7 @@
 """
-백준 15655 N과M(실버3)
+백준 15655 N과M (실버3)
 
-1. 연결관계 정리 후 BFS로 두 노드간 거리 계산
-
-4 2
-9 8 7 1
+1. combinations 패키지로 모든 수열 출력력
 """
 from itertools import combinations
 
@@ -14,4 +11,5 @@ def main():
     lst.sort()
     for i in combinations(lst, M):
         print(*i)
+        
 main()
