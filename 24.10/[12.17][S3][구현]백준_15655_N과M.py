@@ -5,11 +5,13 @@
 """
 from itertools import combinations
 
+
 def main():
     _, M = map(int, input().split())
     lst = [*map(int, input().split())]
     lst.sort()
     for i in combinations(lst, M):
         print(*i)
+
         
 main()
