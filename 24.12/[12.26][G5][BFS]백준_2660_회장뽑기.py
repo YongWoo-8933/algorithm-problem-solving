@@ -1,7 +1,7 @@
 """
 백준 2660 회장뽑기 (골드5)
 
-1. 간단한 bfs로 노드간 거리 검사사
+1. 간단한 bfs로 노드간 거리 검사
 """
 from sys import stdin
 from collections import deque

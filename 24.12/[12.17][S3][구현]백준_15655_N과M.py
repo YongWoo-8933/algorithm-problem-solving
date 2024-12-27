@@ -1,7 +1,7 @@
 """
 백준 15655 N과M (실버3)
 
-1. combinations 패키지로 모든 수열 출력력
+1. combinations 패키지로 모든 수열 출력
 """
 from itertools import combinations
 

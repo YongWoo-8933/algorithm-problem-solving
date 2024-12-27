@@ -1,7 +1,7 @@
 """
 백준 1743 음식물 피하기 (실버1)
 
-1. 간단한 bfs로 영역 크기 검사사
+1. 간단한 bfs로 영역 크기 검사
 """
 from sys import stdin
 from collections import deque
