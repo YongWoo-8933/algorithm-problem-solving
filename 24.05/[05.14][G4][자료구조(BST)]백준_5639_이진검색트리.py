@@ -6,7 +6,6 @@
 3. 후위순회 진행
 """
 
-
 class Node:
     def __init__(self, key, left=None, right=None):
         self.key = key
