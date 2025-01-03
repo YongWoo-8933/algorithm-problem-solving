@@ -70,8 +70,3 @@ fun main() = with(System.`in`.bufferedReader())  {
 
     tree.postorderTraversal()
 }
-
-
-
-
-
