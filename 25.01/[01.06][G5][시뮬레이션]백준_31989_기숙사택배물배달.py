@@ -1,7 +1,7 @@
 """
 백준 31989 기숙사 택배물 배달 (골드5)
 
-1. 택배 보관소를 기준으로 좌우 돌리면 됨됨
+1. 택배 보관소를 기준으로 좌우 시뮬레이션 돌리면 됨.
 """
 
 from sys import stdin
@@ -34,5 +34,5 @@ def main():
                 break
         answer += dists[node]-dists[N+1]
     print(answer)
-    
+
 main()
