@@ -36,4 +36,3 @@ def main():
     print(*route[::-1])
 
 main()
-
