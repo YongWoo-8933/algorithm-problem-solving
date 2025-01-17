@@ -34,6 +34,3 @@ for i in stdin:
     answer += ((S * inverse_N) % MOD)
     answer %= MOD
 print(answer)
-
-    
-
