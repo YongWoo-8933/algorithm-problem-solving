@@ -6,7 +6,7 @@
 from sys import stdin
 
 def main():
-    N, K = map(int, input().split())
+    input()
     for i in stdin:
         lst = [*map(int, i.split())]
         lst = [0]+sorted(lst[1:])
